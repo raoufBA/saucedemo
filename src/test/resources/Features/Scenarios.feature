@@ -1,9 +1,9 @@
-#@Scenarios
+@Scenarios
 Feature: tester le site Swag Labs
 
   Background: tester la fonctionnalité Login
     Given je suis dans le site saucedemo
-    When Je saisie userName "problem_user"
+    When Je saisie userName "visual_user"
     And Je saisie password "secret_sauce"
     And je clique sur le bouton Login
     Then redirection vers la page Home
