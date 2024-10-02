@@ -1,11 +1,14 @@
 package steps;
 
 import PageFactory.*;
+import Utils.ConfigReader;
 import Utils.ElementUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Properties;
 
 public class Scenarios {
     WebDriver driver;
@@ -15,6 +18,8 @@ public class Scenarios {
     CheckoutPage checkoutPage;
     LogoutPage logoutPage;
     ElementUtils utilities;
+    Properties properties;
+    ConfigReader configReader;
 
     @Given("je suis dans le site saucedemo")
     public void je_suis_dans_le_site_saucedemo() {
@@ -27,16 +32,20 @@ public class Scenarios {
         driver.get("https://www.saucedemo.com/");
         driver.manage().window().maximize();
         utilities = new ElementUtils(driver);
+        configReader = new ConfigReader();
+        properties = configReader.configurationManager();
+
     }
 
     @When("Je saisie userName {string}")
     public void je_saisie_user_name(String username) {
-        loginPage.setLoginButton(username);
+
+        loginPage.setLoginButton(configReader.getUserName());
     }
 
     @When("Je saisie password {string}")
     public void je_saisie_password(String password) {
-        loginPage.setPassword(password);
+        loginPage.setPassword(configReader.getPassword());
     }
 
     @When("je clique sur le bouton Login")
@@ -117,7 +126,7 @@ public class Scenarios {
     @Then("les produits se sont supprimes")
     public void les_produits_se_sont_supprimes() {
         utilities.Exist("Sauce Labs Onesie");
-        DriverManager.quitDriver();
+
     }
 
     @When("je clique sur menu")
@@ -133,7 +142,6 @@ public class Scenarios {
     @Then("une redirection vers la page d'acceuil")
     public void une_redirection_vers_la_page_d_acceuil() {
         utilities.Confirmation("https://www.saucedemo.com/");
-        DriverManager.quitDriver();
     }
 }
 
