@@ -49,8 +49,8 @@ public class CheckoutPage {
         SetLastname.sendKeys(lastname);
     }
 
-    public void je_saisie_mon_postal_code(int postalcode) {
-        SetAddress.sendKeys(String.valueOf(postalcode));
+    public void je_saisie_mon_postal_code(String postalcode) {
+        SetAddress.sendKeys(postalcode);
     }
 
     public void je_clique_sur_continue() {

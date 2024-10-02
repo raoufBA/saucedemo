@@ -68,24 +68,24 @@ public class Scenarios {
     public void je_clique_sur_le_panier() {
         checkoutPage.je_clique_sur_le_panier();
     }
+
     @When("je clique sur Chekout")
     public void je_clique_sur_chekout() {
         checkoutPage.je_clique_sur_chekout();
     }
 
-    @Then("je saisie mon First name {string}")
+    @When("je saisie mon First name {string}")
     public void je_saisie_mon_first_name(String firstname) {
         checkoutPage.je_saisie_mon_first_name(firstname);
     }
 
-    @Then("je saisie mon Last name {string}")
+    @When("je saisie mon Last name {string}")
     public void je_saisie_mon_last_name(String lastname) {
         checkoutPage.je_saisie_mon_last_name(lastname);
     }
 
-    @Then("je saisie mon postal code {string}")
-    public void je_saisie_mon_postal_code(String arg0) {
-        int postalcode = Integer.parseInt(arg0);
+    @When("je saisie mon postal code {string}")
+    public void je_saisie_mon_postal_code(String postalcode) {
         checkoutPage.je_saisie_mon_postal_code(postalcode);
     }
 
@@ -97,6 +97,11 @@ public class Scenarios {
     @Then("je clique sur Finish")
     public void je_clique_sur_finish() {
         checkoutPage.je_clique_sur_finish();
+    }
+
+    @Then("une page overview s affiche")
+    public void une_page_overview_s_affiche() {
+        utilities.Exist("Checkout: Overview");
     }
 
     @Then("une redirection vers une autre page")
@@ -112,6 +117,7 @@ public class Scenarios {
     @Then("les produits se sont supprimes")
     public void les_produits_se_sont_supprimes() {
         utilities.Exist("Sauce Labs Onesie");
+        DriverManager.quitDriver();
     }
 
     @When("je clique sur menu")
@@ -127,6 +133,7 @@ public class Scenarios {
     @Then("une redirection vers la page d'acceuil")
     public void une_redirection_vers_la_page_d_acceuil() {
         utilities.Confirmation("https://www.saucedemo.com/");
+        DriverManager.quitDriver();
     }
 }
 
